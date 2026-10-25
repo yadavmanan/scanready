@@ -33,7 +33,7 @@ Unverified: the exact model identifier `gpt-5.4-mini` and its structured-output 
 
 ## Where It Runs and How Someone Tries It
 - Runs locally, in the browser, against a local backend. Requires Python 3.13, the virtual environment, and an OpenAI API key in `backend/.env` (`OPENAI_API_KEY=...`). A secret-free `backend/.env.example` is committed.
-- Start (exact command confirmed in build): from `backend/`, `.venv\Scripts\python.exe -m uvicorn app.main:app --port 8000`, then open `http://localhost:8000`.
+- Start (exact command confirmed in build): from `backend/`, `.venv\Scripts\python.exe -m uvicorn app.main:app --port 8010`, then open `http://localhost:8010`.
 - The demo video is recorded from this local run. Submission needs a short demo video and a public GitHub repository. Deployment is optional and not planned.
 
 ## Look and Feel

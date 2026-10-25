@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ScanReady — App Map</title>
+<style>
+  body { font: 17px/1.55 "Segoe UI", system-ui, sans-serif; color: #1c2b30; max-width: 52rem; margin: 0 auto; padding: 1.5rem; background: #fff; }
+  h1, h2 { line-height: 1.25; }
+  h2 { margin-top: 2rem; border-bottom: 2px solid #1b7f8c; padding-bottom: .25rem; }
+  code { background: #f4f9fa; padding: 0 .3em; border-radius: 4px; }
+  summary { cursor: pointer; font-weight: 600; }
+  summary:focus-visible { outline: 3px solid #1b7f8c; outline-offset: 2px; }
+  .note { background: #f4f9fa; border-left: 4px solid #1b7f8c; padding: .75rem 1rem; }
+  svg { max-width: 100%; height: auto; }
+</style>
+</head>
+<body>
+<h1>ScanReady — App Map</h1>
+<p class="note">Snapshot of the code at the commit listed at the bottom. It can drift as the code changes.</p>
+
+<h2>What the app does</h2>
+<p>ScanReady reads a patient's appointment documents (PDFs in <code>docs/</code>) and builds a calm plan: when to arrive, what to do, and what might block them. It drafts requests to the imaging center and answers questions only when the documents support the answer. Otherwise it says it doesn't know and suggests a question for the center.</p>
+<ul>
+  <li><strong>Frontend</strong> (<code>frontend/</code>): plain HTML, CSS and JavaScript, served by the backend.</li>
+  <li><strong>Backend</strong> (<code>backend/app/</code>): FastAPI. It loads the PDFs, calls OpenAI (<code>gpt-5.4-mini</code>) and checks every quote against the source text.</li>
+  <li><strong>Documents</strong> (<code>docs/</code>): five fictional PDFs.</li>
+</ul>
+
+<h2>One action, end to end: “Build my plan”</h2>
+<svg viewBox="0 0 720 120" role="img" aria-label="Build my plan flows from button to API route to plan builder to the AI model and grounding filter, then back to the Your plan screen">
+  <g font-family="Segoe UI, sans-serif" font-size="13" fill="#1c2b30" stroke="#1b7f8c" stroke-width="2">
+    <rect x="5" y="30" width="125" height="60" rx="8" fill="#f4f9fa"/>
+    <rect x="155" y="30" width="125" height="60" rx="8" fill="#f4f9fa"/>
+    <rect x="305" y="30" width="125" height="60" rx="8" fill="#f4f9fa"/>
+    <rect x="455" y="30" width="125" height="60" rx="8" fill="#f4f9fa"/>
+    <rect x="605" y="30" width="110" height="60" rx="8" fill="#f4f9fa"/>
+    <path d="M130 60h25M280 60h25M430 60h25M580 60h25" fill="none"/>
+  </g>
+  <g font-family="Segoe UI, sans-serif" font-size="12" fill="#1c2b30" text-anchor="middle">
+    <text x="67" y="55">app.js</text><text x="67" y="72">buildPlan()</text>
+    <text x="217" y="55">main.py</text><text x="217" y="72">POST /api/plan</text>
+    <text x="367" y="55">plan.py</text><text x="367" y="72">build_plan()</text>
+    <text x="517" y="55">OpenAI + _grounded</text><text x="517" y="72">(quote check)</text>
+    <text x="660" y="55">renderPlan()</text><text x="660" y="72">Your plan</text>
+  </g>
+</svg>
+
+<h2>Reference route (not toured interactively)</h2>
+<ol>
+  <li><strong>Entry:</strong> <code>frontend/app.js</code> → search <code>async function buildPlan</code>. It POSTs to <code>/api/plan</code> and hands the result to <code>renderPlan</code>.</li>
+  <li><strong>Logic:</strong> <code>backend/app/plan.py</code> → <code>build_plan</code> tries <code>_live_plan</code>, falls back to <code>backend/cache/plan.json</code> if the call fails, and <code>_grounded</code> drops any item whose quote isn't in its source document.</li>
+  <li><strong>Result:</strong> <code>frontend/app.js</code> → <code>renderPlan</code> draws the headline, the discrepancy note, tasks and blockers with their source quotes.</li>
+</ol>
+
+<h2>To change this, start here</h2>
+<details open>
+<summary>Pointers</summary>
+<ul>
+  <li>Wording of the won't-guess reply: <code>backend/app/ask.py</code> → <code>WONT_GUESS</code>.</li>
+  <li>Which barriers are offered: <code>backend/app/draft.py</code> → <code>BARRIERS</code>.</li>
+  <li>Colors and type: <code>frontend/styles.css</code> → the variables at the top.</li>
+  <li>Which documents are read: add or replace PDFs in <code>docs/</code>; <code>backend/app/documents.py</code> → <code>load_documents</code>.</li>
+  <li>Model choice: <code>backend/app/ai.py</code> → <code>MODEL</code>.</li>
+</ul>
+</details>
+
+<h2>A practice to reuse</h2>
+<p><strong>Decision:</strong> make the safety rule observable. The PRD says medication questions must not be guessed, and <code>backend/app/ask.py</code> enforces it in code: if the model says the documents don't answer, or no citation matches the source text, the fixed <code>WONT_GUESS</code> reply is returned.</p>
+<p><strong>Evidence:</strong> a build check asked about medication, a pacemaker and a contrast allergy and got the fixed reply each time. It also asked about fasting and arrival time and got cited answers.</p>
+<p><strong>Reuse:</strong> on another AI project, write the “must never” rule as something a script can check, and enforce it in code rather than only in the prompt.</p>
+
+<h2>Run it again</h2>
+<p>From <code>backend/</code>: <code>.venv\Scripts\python.exe -m uvicorn app.main:app --port 8010</code>, then open <code>http://localhost:8010</code>. Needs <code>backend/.env</code> with your own <code>OPENAI_API_KEY</code> (see <code>backend/.env.example</code>).</p>
+<p>Source commit: see <code>git log</code> for the latest commit at the time of this map.</p>
+</body>
+</html>

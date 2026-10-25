@@ -61,24 +61,24 @@ Build mode: fast
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored: after slice 2 (the plan, the kernel)
-- [ ] Final kick-the-tires exploration and feedback completed
+- [x] Early usable behavior explored: after slice 2 (the plan, the kernel) — skipped for speed (fast mode); folded into the final session
+- [x] Final kick-the-tires exploration and feedback completed
 
 ## Final Review
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete — learner tried the full journey, approved the look (white + teal #1b7f8c, Segoe UI) and said nothing needs to change; confirmed ready to ship
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] Learning activity complete — brief recap (no hands-on tour; learner chose fast mode)
+- [x] Optional edit and transfer reflection addressed — not offered, to keep fast mode quick
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: not started
-Route and stops: not started
-Edit outcome: not started
-Reflection: not started
-Activity mode: not started
+Activity and evidence: brief recap of the won't-guess rule being enforced in `backend/app/ask.py` and verified with medication/pacemaker/contrast-allergy questions
+Route and stops: reference route in the map (app.js buildPlan → plan.py build_plan → app.js renderPlan), not toured
+Edit outcome: not offered
+Reflection: not offered
+Activity mode: recap
 
 ## Revisions
 
