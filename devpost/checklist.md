@@ -49,7 +49,7 @@ Build mode: fast
   Learner check: Ask both questions and say whether the answers feel trustworthy.
   Commit: `Add cited answers and won't-guess safety path`
 
-- [ ] **5. Calm, accessible look and feel**
+- [x] **5. Calm, accessible look and feel**
   Becomes usable: The whole journey looks the way you described: mostly white, clean, one accent color, large readable text, text-plus-icon status labels, keyboard and screen-reader friendly.
   Why now: Functionality is proven by now, so styling can be judged on the real screens.
   PRD ref: `prd.md > Look and Feel`, `prd.md > Accessibility basics`
