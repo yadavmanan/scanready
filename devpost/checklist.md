@@ -39,7 +39,7 @@ Build mode: fast
   Learner check: Pick "wheelchair or mobility aid", read the drafted request, and copy it.
   Commit: `Add blocker selection and drafted requests`
 
-- [ ] **4. Safety: ask a question and get an honest answer**
+- [x] **4. Safety: ask a question and get an honest answer**
   Becomes usable: You can ask a question; if the documents answer it you get a cited answer, and if not, ScanReady says it won't guess and gives the exact question to ask the center.
   Why now: This is the trust moment in the demo and the guardrail for everything above.
   PRD ref: `prd.md > Safety: won't guess`

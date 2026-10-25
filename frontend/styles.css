@@ -23,3 +23,8 @@ button.option:focus-visible, button.secondary:focus-visible, button.link:focus-v
 .draft-subject { font-weight: 600; margin: 0 0 8px; }
 .draft-body { margin: 0; white-space: pre-wrap; }
 textarea { font: inherit; width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #c8dfe2; border-radius: 8px; margin: 6px 0 12px; }
+.ask { display: grid; gap: 8px; margin-bottom: 12px; }
+.ask input { font: inherit; padding: 12px; border: 1px solid #c8dfe2; border-radius: 12px; }
+.answer { border: 1px solid #c8dfe2; border-radius: 12px; padding: 14px 16px; margin-bottom: 20px; }
+.answer.wont-guess { background: #f6fbfb; border-left: 4px solid #1b7f8c; }
+.ask-label { font-weight: 600; margin-bottom: 4px; }

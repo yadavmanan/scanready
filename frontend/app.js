@@ -181,6 +181,44 @@ async function copyRequest() {
 }
 
 $("open-barriers").addEventListener("click", openBarriers);
+
+async function askQuestion(event) {
+  event.preventDefault();
+  const input = $("ask-input");
+  const question = input.value.trim();
+  const out = $("ask-result");
+  if (!question) return;
+  out.innerHTML = "";
+  out.appendChild(el("p", null, "Checking your documents\u2026"));
+  try {
+    const res = await fetch("/api/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question }),
+    });
+    if (!res.ok) throw new Error((await res.json()).detail || res.statusText);
+    renderAnswer(await res.json());
+  } catch (err) {
+    out.innerHTML = "";
+    out.appendChild(el("p", null, "Sorry, I couldn't check that just now. Please try again in a moment."));
+  }
+}
+
+function renderAnswer(r) {
+  const out = $("ask-result");
+  out.innerHTML = "";
+  const card = el("div", r.answered ? "answer" : "answer wont-guess");
+  card.appendChild(statusBadge(r.answered ? "Completed" : "Needs human confirmation"));
+  card.appendChild(el("p", null, r.answer));
+  for (const c of r.citations) card.appendChild(sourceLine(c.source_doc_id, c.quote));
+  if (!r.answered) {
+    card.appendChild(el("p", "ask-label", "Question to ask your imaging center:"));
+    card.appendChild(el("p", "draft-body", r.question_for_center));
+  }
+  out.appendChild(card);
+}
+
+$("ask-form").addEventListener("submit", askQuestion);
 $("other-go").addEventListener("click", () => chooseBarrier("Other", $("other-text").value.trim() || "Not specified"));
 $("copy-request").addEventListener("click", copyRequest);
 document.addEventListener("click", (e) => {

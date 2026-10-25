@@ -28,6 +28,13 @@
       <ul id="blocker-list" class="cards"></ul>
       <h2>Before you go</h2>
       <ul id="task-list" class="cards"></ul>
+      <h2>Have a question?</h2>
+      <form id="ask-form" class="ask">
+        <label for="ask-input">Ask about your appointment</label>
+        <input id="ask-input" type="text" autocomplete="off" placeholder="For example: Do I need to fast?">
+        <button class="primary" type="submit">Ask</button>
+      </form>
+      <div id="ask-result" role="status" aria-live="polite"></div>
       <button id="open-barriers" class="primary" type="button">What's making this hard?</button>
     </section>
 

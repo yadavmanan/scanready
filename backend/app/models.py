@@ -49,3 +49,10 @@ class DraftRequest(BaseModel):
     subject: str
     body: str
     grounding: list[Grounding]
+
+
+class Answer(BaseModel):
+    answered_by_documents: bool
+    answer: str
+    citations: list[Grounding]
+    question_for_center: str

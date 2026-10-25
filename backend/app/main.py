@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from . import ai
+from .ask import ask as answer_question
 from .documents import load_documents
 from .draft import BARRIERS, draft_request
 from .plan import build_plan
@@ -54,6 +55,20 @@ def request_draft(body: RequestBody):
         raise HTTPException(status_code=400, detail="Unknown barrier")
     try:
         return draft_request(body.barrier, body.details)
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail=f"{type(exc).__name__}: {exc}")
+
+
+class AskBody(BaseModel):
+    question: str
+
+
+@app.post("/api/ask")
+def ask_endpoint(body: AskBody):
+    if not body.question.strip():
+        raise HTTPException(status_code=400, detail="Please type a question")
+    try:
+        return answer_question(body.question)
     except Exception as exc:
         raise HTTPException(status_code=503, detail=f"{type(exc).__name__}: {exc}")
 
