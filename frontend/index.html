@@ -16,6 +16,19 @@
       <button id="build-plan" class="primary" type="button">Build my plan</button>
       <p id="scan-status" role="status"></p>
     </section>
+
+    <section id="screen-plan" aria-labelledby="plan-title" hidden>
+      <button class="link" type="button" data-go="scan">&larr; Back to My Scan</button>
+      <h1 id="plan-title" tabindex="-1">Your plan</h1>
+      <p id="plan-note" class="note" role="status" hidden></p>
+      <div id="plan-headline" class="headline"></div>
+      <p id="plan-summary" class="summary"></p>
+      <div id="plan-discrepancies"></div>
+      <h2>What needs your attention</h2>
+      <ul id="blocker-list" class="cards"></ul>
+      <h2>Before you go</h2>
+      <ul id="task-list" class="cards"></ul>
+    </section>
   </main>
   <script src="app.js"></script>
 </body>

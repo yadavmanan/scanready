@@ -19,7 +19,7 @@ Build mode: fast
   Learner check: Put your key in `backend/.env`, start the server, open the page, and see the five documents listed.
   Commit: `Add backend scaffold, document loader and My Scan`
 
-- [ ] **2. Your plan: a grounded, cited plan from the documents (the kernel)**
+- [x] **2. Your plan: a grounded, cited plan from the documents (the kernel)**
   Becomes usable: Pressing the button on My Scan shows Your plan: the MRI headline, task cards each naming its source document, any discrepancies, and a blocker count.
   Why now: The unique kernel (reorganizing real instructions without inventing any) comes early. Everything else builds on this plan.
   PRD ref: `prd.md > Grounded action plan`, `prd.md > The Core Journey` (steps 1-3)

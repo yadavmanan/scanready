@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 
 from . import ai
 from .documents import load_documents
+from .plan import build_plan
 
 FRONTEND = Path(__file__).resolve().parents[2] / "frontend"
 
@@ -23,6 +24,14 @@ def documents(include_text: bool = False):
 def ai_check():
     try:
         return ai.check()
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail=f"{type(exc).__name__}: {exc}")
+
+
+@app.post("/api/plan")
+def plan():
+    try:
+        return build_plan()
     except Exception as exc:
         raise HTTPException(status_code=503, detail=f"{type(exc).__name__}: {exc}")
 
