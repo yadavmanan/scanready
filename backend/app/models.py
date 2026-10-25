@@ -38,3 +38,14 @@ class Plan(BaseModel):
     tasks: list[Task]
     discrepancies: list[Discrepancy]
     blockers: list[Blocker]
+
+
+class Grounding(BaseModel):
+    source_doc_id: str
+    quote: str
+
+
+class DraftRequest(BaseModel):
+    subject: str
+    body: str
+    grounding: list[Grounding]

@@ -14,3 +14,12 @@ button.primary:focus-visible { outline: 3px solid #1d2b36; outline-offset: 2px; 
 .callout { border-left: 4px solid #1b7f8c; background: #f6fbfb; padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; }
 .note { background: #fff8e6; border: 1px solid #f0dca4; padding: 8px 12px; border-radius: 8px; }
 button.link { font: inherit; background: none; border: 0; color: #1b7f8c; cursor: pointer; padding: 4px 0; }
+button.option, button.secondary { font: inherit; width: 100%; text-align: left; padding: 14px 16px; border: 1px solid #c8dfe2; border-radius: 12px; background: #fff; color: #1d2b36; cursor: pointer; }
+button.secondary { text-align: center; margin: 8px 0 12px; }
+button.option:hover, button.secondary:hover { background: #f6fbfb; }
+button.option:focus-visible, button.secondary:focus-visible, button.link:focus-visible { outline: 3px solid #1d2b36; outline-offset: 2px; }
+.options li { padding: 0; border: 0; }
+.draft { border: 1px solid #c8dfe2; border-radius: 12px; padding: 16px; margin-bottom: 16px; background: #fff; }
+.draft-subject { font-weight: 600; margin: 0 0 8px; }
+.draft-body { margin: 0; white-space: pre-wrap; }
+textarea { font: inherit; width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #c8dfe2; border-radius: 8px; margin: 6px 0 12px; }

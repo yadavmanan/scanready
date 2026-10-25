@@ -29,7 +29,7 @@ Build mode: fast
   Learner check: Press build and check that each card's source is correct and nothing appears that isn't in the documents.
   Commit: `Add grounded plan extraction and Your plan screen`
 
-- [ ] **3. Blockers: choose a barrier and get a drafted request**
+- [x] **3. Blockers: choose a barrier and get a drafted request**
   Becomes usable: From Your plan you open What's blocking you?, pick a barrier, and Fix the blocker shows a drafted request to the imaging center that you can copy.
   Why now: This is the second half of the core loop and the main way ScanReady helps beyond reading documents.
   PRD ref: `prd.md > Blocker detection and fix`, `prd.md > Screens and Layout`

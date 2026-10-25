@@ -28,6 +28,36 @@
       <ul id="blocker-list" class="cards"></ul>
       <h2>Before you go</h2>
       <ul id="task-list" class="cards"></ul>
+      <button id="open-barriers" class="primary" type="button">What's making this hard?</button>
+    </section>
+
+    <section id="screen-barriers" aria-labelledby="barriers-title" hidden>
+      <button class="link" type="button" data-go="plan">&larr; Back to your plan</button>
+      <h1 id="barriers-title" tabindex="-1">What's blocking you?</h1>
+      <p class="lead">Tell me what could make this appointment difficult. I'll help you ask for what you need.</p>
+      <ul id="barrier-list" class="cards options"></ul>
+      <div id="other-box" hidden>
+        <label for="other-text">Tell me a little more (optional)</label>
+        <textarea id="other-text" rows="3"></textarea>
+        <button id="other-go" class="primary" type="button">Draft my request</button>
+      </div>
+      <button class="secondary" type="button" data-go="plan">Nothing is blocking me</button>
+      <p id="barrier-status" role="status"></p>
+    </section>
+
+    <section id="screen-fix" aria-labelledby="fix-title" hidden>
+      <button class="link" type="button" data-go="barriers">&larr; Back to What's blocking you?</button>
+      <h1 id="fix-title" tabindex="-1">Fix the blocker</h1>
+      <p id="fix-barrier" class="lead"></p>
+      <div class="draft">
+        <p id="fix-subject" class="draft-subject"></p>
+        <p id="fix-body" class="draft-body"></p>
+      </div>
+      <button id="copy-request" class="primary" type="button">Copy this request</button>
+      <p id="copy-status" role="status"></p>
+      <h2>Why I wrote it this way</h2>
+      <ul id="fix-grounding" class="cards"></ul>
+      <p class="note">You can send this by phone or email. ScanReady doesn't send anything for you.</p>
     </section>
   </main>
   <script src="app.js"></script>

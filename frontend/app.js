@@ -111,6 +111,78 @@ async function buildPlan() {
 }
 
 $("build-plan").addEventListener("click", buildPlan);
+
+async function openBarriers() {
+  const list = $("barrier-list");
+  if (!list.children.length) {
+    const res = await fetch("/api/barriers");
+    for (const name of await res.json()) {
+      const li = el("li");
+      const btn = el("button", "option", name);
+      btn.type = "button";
+      btn.addEventListener("click", () => chooseBarrier(name));
+      li.appendChild(btn);
+      list.appendChild(li);
+    }
+  }
+  $("other-box").hidden = true;
+  $("barrier-status").textContent = "";
+  show("barriers");
+}
+
+async function chooseBarrier(name, details = "") {
+  if (name === "Other" && !details) {
+    $("other-box").hidden = false;
+    $("other-text").focus();
+    return;
+  }
+  const status = $("barrier-status");
+  status.textContent = "Writing your request\u2026";
+  try {
+    const res = await fetch("/api/request", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ barrier: name, details }),
+    });
+    if (!res.ok) throw new Error((await res.json()).detail || res.statusText);
+    renderRequest(name, await res.json());
+    status.textContent = "";
+    show("fix");
+  } catch (err) {
+    status.textContent = "Sorry, I couldn't write that request just now. Please try again in a moment.";
+  }
+}
+
+function renderRequest(barrier, req) {
+  $("fix-barrier").textContent = `For: ${barrier}`;
+  $("fix-subject").textContent = req.subject;
+  $("fix-body").textContent = req.body;
+  $("copy-status").textContent = "";
+  const list = $("fix-grounding");
+  list.innerHTML = "";
+  if (!req.grounding.length) {
+    list.appendChild(el("li", null, "Your documents don't cover this, so the request simply asks the center to confirm."));
+  }
+  for (const g of req.grounding) {
+    const li = el("li");
+    li.append(el("strong", null, g.title), sourceLine(g.source_doc_id, g.quote));
+    list.appendChild(li);
+  }
+}
+
+async function copyRequest() {
+  const text = `${$("fix-subject").textContent}\n\n${$("fix-body").textContent}`;
+  try {
+    await navigator.clipboard.writeText(text);
+    $("copy-status").textContent = "Copied. You can paste it into an email or read it out on the phone.";
+  } catch (err) {
+    $("copy-status").textContent = "I couldn't copy it automatically. Please select the text above and copy it.";
+  }
+}
+
+$("open-barriers").addEventListener("click", openBarriers);
+$("other-go").addEventListener("click", () => chooseBarrier("Other", $("other-text").value.trim() || "Not specified"));
+$("copy-request").addEventListener("click", copyRequest);
 document.addEventListener("click", (e) => {
   const go = e.target.closest("[data-go]");
   if (go) show(go.dataset.go);
