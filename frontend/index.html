@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ScanReady</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+    <section id="screen-scan" aria-labelledby="scan-title">
+      <h1 id="scan-title">My Scan</h1>
+      <p class="lead">Hi Anita. Let's get you ready for your scan, one step at a time.</p>
+      <h2>Your documents</h2>
+      <ul id="doc-list" class="cards" aria-live="polite"></ul>
+      <button id="build-plan" class="primary" type="button">Build my plan</button>
+      <p id="scan-status" role="status"></p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
