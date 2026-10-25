@@ -14,49 +14,35 @@
       "quote": "Please arrive by: 10:00 AM for check-in"
     },
     {
-      "title": "Read the MRI Preparation Guide before the visit",
-      "detail": "Please read the attached MRI Preparation Guide before your visit.",
+      "title": "Arrive 30 minutes before the appointment time",
+      "detail": "Arrive 30 minutes before your appointment time to complete check-in and forms.",
       "status": "Needs action",
-      "source_doc_id": "02_appointment_email.pdf",
-      "quote": "Please read the attached MRI Preparation Guide before your visit."
+      "source_doc_id": "03_mri_preparation_guide.pdf",
+      "quote": "Arrive 30 minutes before your appointment time to complete check-in and forms."
     },
     {
-      "title": "Bring a photo ID",
-      "detail": "Bring a photo ID to the appointment.",
+      "title": "Bring photo ID and insurance card",
+      "detail": "Bring both items to the appointment.",
       "status": "Needs action",
       "source_doc_id": "03_mri_preparation_guide.pdf",
       "quote": "Bring a photo ID and your insurance card."
     },
     {
-      "title": "Bring your insurance card",
-      "detail": "Bring your insurance card to the appointment.",
-      "status": "Needs action",
-      "source_doc_id": "03_mri_preparation_guide.pdf",
-      "quote": "Bring a photo ID and your insurance card."
-    },
-    {
-      "title": "Bring your referral/order form",
-      "detail": "Bring your referral/order form with you.",
-      "status": "Needs action",
-      "source_doc_id": "03_mri_preparation_guide.pdf",
-      "quote": "Bring your referral/order form and any previous imaging reports if you have them."
-    },
-    {
-      "title": "Bring previous imaging reports if you have them",
-      "detail": "Bring any previous imaging reports you have.",
+      "title": "Bring referral/order form and previous imaging reports if available",
+      "detail": "Bring your referral/order form and any previous imaging reports if you have them.",
       "status": "Needs action",
       "source_doc_id": "03_mri_preparation_guide.pdf",
       "quote": "Bring your referral/order form and any previous imaging reports if you have them."
     },
     {
       "title": "No fasting is required",
-      "detail": "You may eat and drink as you normally do.",
+      "detail": "You may eat and drink as normal before this exam.",
       "status": "Completed",
       "source_doc_id": "03_mri_preparation_guide.pdf",
       "quote": "No fasting is required for this exam. You may eat and drink as you normally do."
     },
     {
-      "title": "Wear the right clothing",
+      "title": "Wear clothing without metal",
       "detail": "Wear comfortable clothing without metal zippers, snaps, or buckles.",
       "status": "Needs action",
       "source_doc_id": "03_mri_preparation_guide.pdf",
@@ -71,27 +57,27 @@
     },
     {
       "title": "Complete MRI safety screening at check-in",
-      "detail": "You will complete the safety screening form at check-in.",
+      "detail": "You will complete an MRI safety screening form at check-in.",
       "status": "Needs action",
       "source_doc_id": "03_mri_preparation_guide.pdf",
       "quote": "You will complete an MRI safety screening form at check-in."
     },
     {
-      "title": "Tell the technologist about any implanted medical device or metal",
-      "detail": "Share this information with the imaging team at the visit.",
+      "title": "Tell the technologist about implanted devices or metal",
+      "detail": "Tell the technologist if you have any implanted medical device or metal in your body.",
       "status": "Needs action",
       "source_doc_id": "03_mri_preparation_guide.pdf",
       "quote": "Tell the technologist if you have any implanted medical device or metal in your body."
     },
     {
-      "title": "Keep the insurance approval status in mind",
-      "detail": "Approval is pending, and you should contact Member Services if you do not receive a decision before the appointment.",
-      "status": "Waiting",
+      "title": "Keep the insurance letter and watch for a decision",
+      "detail": "Keep the letter. If no decision arrives before the appointment, contact Member Services.",
+      "status": "Needs action",
       "source_doc_id": "05_insurance_letter.pdf",
-      "quote": "Status: Approval is pending. Your provider has submitted the request; we expect to respond within 5 business days."
+      "quote": "Keep this letter. If you do not receive a decision before your appointment, contact Member Services at 555-0199."
     },
     {
-      "title": "Call if you need to reschedule",
+      "title": "Call to reschedule at least 24 hours before if needed",
       "detail": "If you need to reschedule, call 555-0142 at least 24 hours before your appointment.",
       "status": "Needs action",
       "source_doc_id": "02_appointment_email.pdf",
@@ -100,7 +86,7 @@
   ],
   "discrepancies": [
     {
-      "summary": "The appointment email says to arrive by 10:00 AM, while the preparation guide says to arrive 30 minutes before the appointment time.",
+      "summary": "The documents give two different arrival instructions: one says arrive by 10:00 AM, and another says arrive 30 minutes before the appointment time.",
       "source_doc_ids": [
         "02_appointment_email.pdf",
         "03_mri_preparation_guide.pdf"
@@ -109,32 +95,25 @@
   ],
   "blockers": [
     {
-      "title": "Wheelchair transfer assistance is available on request",
-      "why": "The patient uses a wheelchair for longer distances, and transfer assistance must be requested ahead of time.",
+      "title": "Approval is still pending",
+      "why": "The insurance letter says approval is needed and is not yet final.",
       "status": "Needs human confirmation",
-      "source_doc_id": "01_imaging_referral.pdf",
-      "quote": "Patient uses a wheelchair for longer dista"
+      "source_doc_id": "05_insurance_letter.pdf",
+      "quote": "Status: Approval is pending. Your provider has submitted the request; we expect to respond within 5 business days."
     },
     {
-      "title": "Language interpreter may be needed",
-      "why": "The patient has limited English proficiency, and interpreter services must be requested in advance.",
-      "status": "Needs human confirmation",
+      "title": "Language support may need to be requested in advance",
+      "why": "The referral notes limited English proficiency, and the center says an interpreter must be requested in advance if needed.",
+      "status": "Needs action",
       "source_doc_id": "01_imaging_referral.pdf",
       "quote": "Patient has limited English proficiency (first language: Hindi)."
     },
     {
-      "title": "Request accommodations at least 2 business days before the appointment",
-      "why": "The center says some accommodations need advance contact, including step-free access confirmation, a language interpreter, or extra assistance at check-in.",
-      "status": "Needs action",
-      "source_doc_id": "04_center_accessibility_info.pdf",
-      "quote": "Please contact the center in advance if you need step-free access confirmed for your visit, a language interpreter, or extra assistance at check-in."
-    },
-    {
-      "title": "Insurance approval is still pending",
-      "why": "The service requires approval before it is performed, and the letter says approval is pending.",
+      "title": "Wheelchair support may need to be requested in advance",
+      "why": "The referral notes wheelchair use for longer distances, and the center says wheelchair transfer assistance is available on request.",
       "status": "Needs human confirmation",
-      "source_doc_id": "05_insurance_letter.pdf",
-      "quote": "Pre-authorization: This service requires approval from Evergreen Health Plan before it is performed."
+      "source_doc_id": "01_imaging_referral.pdf",
+      "quote": "Patient uses a wheelchair for longer dista"
     }
   ]
 }
