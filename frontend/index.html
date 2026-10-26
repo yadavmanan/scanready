@@ -15,17 +15,21 @@
   </header>
   <main id="app">
     <section id="screen-scan" aria-labelledby="scan-title">
-      <h1 id="scan-title">My Scan</h1>
+      <p class="eyebrow">Your appointment companion</p>
+      <h1 id="scan-title" tabindex="-1">My Scan</h1>
       <p class="lead">Hi Anita. Let's get you ready for your scan, one step at a time.</p>
-      <h2>Your documents</h2>
+      <div class="section-heading"><h2>Your documents</h2><span id="doc-count" class="count"></span></div>
       <ul id="doc-list" class="cards" aria-live="polite"></ul>
-      <button id="build-plan" class="primary" type="button">Build my plan</button>
+      <button id="retry-documents" class="secondary" type="button" hidden>Retry documents</button>
+      <button id="build-plan" class="primary" type="button" disabled>Build my plan</button>
+      <button id="return-plan" class="secondary" type="button" data-go="plan" hidden>Return to your plan</button>
       <p id="scan-status" role="status"></p>
     </section>
 
     <section id="screen-plan" aria-labelledby="plan-title" hidden>
       <button class="link" type="button" data-go="scan">&larr; Back to My Scan</button>
       <h1 id="plan-title" tabindex="-1">Your plan</h1>
+      <div class="plan-tools"><span id="plan-origin" class="eyebrow"></span><button id="print-plan" class="link" type="button">Print plan / Save PDF</button></div>
       <p id="plan-note" class="note" role="status" hidden></p>
       <div id="plan-headline" class="headline"></div>
       <p id="plan-summary" class="summary"></p>
@@ -33,12 +37,23 @@
       <h2>What needs your attention</h2>
       <ul id="blocker-list" class="cards"></ul>
       <h2>Before you go</h2>
+      <p id="task-progress" class="source" role="status"></p>
+      <progress id="task-meter" value="0" max="1" aria-label="Preparation checklist progress"></progress>
+      <label class="filter-toggle"><input id="unfinished-only" type="checkbox"> Only unfinished tasks</label>
+      <p id="tasks-empty" class="note" hidden>No unfinished tasks. Items needing confirmation still need a reply from the center.</p>
       <ul id="task-list" class="cards"></ul>
       <h2>Have a question?</h2>
       <form id="ask-form" class="ask">
+        <label for="suggested-question">Common questions</label>
+        <select id="suggested-question">
+          <option value="">Choose a question</option>
+          <option>Do I need to fast?</option>
+          <option>What should I bring?</option>
+          <option>Can I take my usual medication?</option>
+        </select>
         <label for="ask-input">Ask about your appointment</label>
-        <input id="ask-input" type="text" autocomplete="off" placeholder="For example: Do I need to fast?">
-        <button class="primary" type="submit">Ask</button>
+        <input id="ask-input" type="text" maxlength="500" required autocomplete="off" placeholder="For example: Do I need to fast?">
+        <button id="ask-submit" class="primary" type="submit">Ask</button>
       </form>
       <div id="ask-result" role="status" aria-live="polite"></div>
       <button id="open-barriers" class="primary" type="button">What's making this hard?</button>

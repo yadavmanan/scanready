@@ -27,7 +27,7 @@ The demo patient is **Anita**, from the playbook: limited English, mobility limi
 They come back because the plan shows what's done, what's waiting, and what still needs action.
 
 ## Inspiration & Identity
-Calm, plain-language, one action per card. This is a task-oriented care-journey view (e.g. "Your care journey: MRI Thursday, 2 blockers, 5 completed"), not a chat box or AI orb. Status uses text and icons, never color alone. It is keyboard- and screen-reader-friendly with large text, and voice is optional. Tone: reassuring and never alarming. The full direction is in `build_with_ai_basics_win_playbook_v2.md`, sections 13 and 5.
+Calm, plain-language, one action per card. This is a task-oriented care-journey view (e.g. "Your care journey: MRI Thursday, 2 blockers, 5 completed"), not a chat box or AI orb. Status uses text and icons, never color alone. It is keyboard- and screen-reader-friendly with large text, and voice is optional. Tone: reassuring and never alarming.
 
 ## Why This Matters to the Learner
 Patients who are scared and confused deserve someone calm to deal with. The learner's main goal is a working ScanReady demo. They work in healthcare AI/ML and noticed the scan can be ready while the patient is still blocked by everything around it.

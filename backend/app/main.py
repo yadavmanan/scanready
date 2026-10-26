@@ -6,7 +6,7 @@ from pydantic import BaseModel
 
 from . import ai
 from .ask import ask as answer_question
-from .documents import load_documents
+from .documents import DOCS_DIR, load_documents
 from .draft import BARRIERS, draft_request
 from .plan import build_plan
 
@@ -73,4 +73,5 @@ def ask_endpoint(body: AskBody):
         raise HTTPException(status_code=503, detail=f"{type(exc).__name__}: {exc}")
 
 
+app.mount("/documents", StaticFiles(directory=DOCS_DIR), name="documents")
 app.mount("/", StaticFiles(directory=FRONTEND, html=True), name="frontend")
