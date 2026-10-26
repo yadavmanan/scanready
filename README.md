@@ -113,6 +113,17 @@ Open <http://localhost:8010>, then press **Build my plan**.
 
 On macOS or Linux, use `.venv/bin/python` and `cp` instead. The `.env` file is git-ignored; never commit a key. With no valid key, the plan screen falls back to the saved plan in `backend/cache/plan.json` and labels it as saved.
 
+## Run with Docker
+
+From the repository root, build and run the combined frontend/backend container:
+
+```powershell
+docker build -t scanready .
+docker run --rm -p 8010:8010 --env-file backend/.env scanready
+```
+
+Open <http://localhost:8010>. The container serves the frontend, API, and sample PDFs together. The API key is read at runtime from `backend/.env`; it is excluded from the Docker build context and is not copied into the image. If you do not have a key, omit `--env-file backend/.env`; the plan screen can use the labeled saved fallback.
+
 ## Try the demo
 
 1. Open **My Scan** and press **Build my plan**. Note the headline, the discrepancy and the cited tasks.
